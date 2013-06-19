@@ -20,7 +20,7 @@ using System.Collections;
 #endregion
 
 public class MyMiniMap : MonoBehaviour {
-	public enum ChapterMapTypes {// 챕터맵의 종류
+	public enum ChapterMapTypes { // 챕터맵의 종류
 		chapter1_1,
 		chapter1_2,
 		chapter1_3,
@@ -31,34 +31,35 @@ public class MyMiniMap : MonoBehaviour {
 		chapter3_2,
 		chapter3_3,
 	};
-	
+
 	private int[] totalmapWidthPx = {923, 923, 923};// 전체 맵의 픽셀 너비 923 픽셀
 	private int[] totalmapHeightPx = {923, 923, 923};// 전체 맵의 픽셀 높이 923 픽셀
 	private int[] chaptermapWidth = {314, 314, 314};// 챕터 맵의 픽셀 너비 314 픽셀
 	private int[] chaptermapHeight = {314, 314, 314};// 챕터 맵의 픽셀 높이 314 픽셀
-	
+
 	private int[] pixelZeroXPx = {451, 451, 451};// 전체이미지맵에서의 픽셀 X좌표
 	private int[] pixelZeroYPx = {883, 883, 883};// 전체이미지맵에서의 픽셀 X좌표
-	
-	private double unitPerPixelRatio;// 1유니티상의 픽셀거리	
+
+	private double unitPerPixelRatio;// 1유니티상의 픽셀거리
+	private double[] unitPerPixelRatioArray = {33 / 36.2};
 	private Vector2[] chapterMapPos;// 챕터맵별로 적용되는 위치값배열
-	
+
 	public ChapterMapTypes ChapterMapType = ChapterMapTypes.chapter1_1;
 	public GameObject PlayerDotGUI;// 플레이어의 닷 GUI 게임오브젝트
 	public GameObject Player;// 플레이어 게임오브젝트
-	
+
 	public GameObject DotEnemies;// 몬스터 점들을 관리하는 부모오브젝트
 	public GameObject DotEnemyPrefab;// 몬스터 점의 프리팹
-	
+
 	public Texture[] ChapterMaps;// 챕터맵들의 텍스쳐배열
-	
+
 	private Vector3 PlayerPosition;// 플레이어의 좌표값을 변수에 대입
 	// 픽셀의 비율(전체 원본픽셀을 표시하면 화면에 거의 꽉 참, 화면에 비율에 맞춰 축소)
 	public float RatioScale = 0.4f;
-	
+
 	private int chaptermapPosXPx;// 챕터맵의 왼쪽 아래부분의 X좌표(0,0)을 왼쪽 아래로 기준으로 함
 	private int chaptermapPosYPx;// 챕터맵의 왼쪽 아래부분의 Y좌표(0,0)을 왼쪽 아래로 기준으로 함
-	
+
 	private double pixelWidth;// 원본 픽셀에 픽셀 비율을 적용한 픽셀 너비
 	private double pixelHeight;// 원본 픽셀에 픽셀 비율을 적용한 픽셀 높이
 	private double pixelX;// 적용된 픽셀의 너비를 바탕으로 한 픽셀의 X 좌표
@@ -73,118 +74,134 @@ public class MyMiniMap : MonoBehaviour {
 	private double converted_chaptermap_player_pos_y_px;// converted_totalmap_player_pos_y_px 를 챕터맵을 기준좌표로 바꾼 Y좌표
 	private double gui_chaptermap_player_pos_x_scale;//gui상의 0과 1사이의 좌표계로 변환한 X좌표(scale 적용, gui상의 챕터맵의 왼쪽 오른쪽 좌표도 적용)
 	private double gui_chaptermap_player_pos_y_scale;//gui상의 0과 1사이의 좌표계로 변환한 Y좌표(scale 적용, gui상의 챕터맵의 왼쪽 오른쪽 좌표도 적용)
-	
+
 	public float refeshTimeDisplayingDotEnemies = 2;
-	
+
 	// 미니맵을 화면에 보여주는 상태를 위한 변수들
-	private float currentAddTimeDisplayingDotEnemies = 0;	
+	private float currentAddTimeDisplayingDotEnemies = 0;
 	private bool canShow = true;
-	
+
 	private int currentPixelZeroX_px = 0;
 	private int currentPixelZeroY_px = 0;
-	private int currentTotalmapHeight_px = 0;	
-	
+	private int currentTotalmapHeight_px = 0;
+
+	private void SetupCoodination(int index) {
+		unitPerPixelRatio = unitPerPixelRatioArray[index];
+		currentPixelZeroX_px = pixelZeroXPx[index];
+		currentPixelZeroY_px = pixelZeroYPx[index];
+		currentTotalmapHeight_px = totalmapHeightPx[index];
+	}
+
 	private void SetupPositions() {
 		switch (ChapterMapType) {
 			case ChapterMapTypes.chapter1_1:
-			currentPixelZeroX_px = pixelZeroXPx[0];
-			currentPixelZeroY_px = pixelZeroYPx[0];
-			currentTotalmapHeight_px = totalmapHeightPx[0];
+			SetupCoodination(0);
+			// currentPixelZeroX_px = pixelZeroXPx[0];
+			// currentPixelZeroY_px = pixelZeroYPx[0];
+			// currentTotalmapHeight_px = totalmapHeightPx[0];
 			break;
-			
+
 			case ChapterMapTypes.chapter1_2:
-			currentPixelZeroX_px = pixelZeroXPx[0];
-			currentPixelZeroY_px = pixelZeroYPx[0];
-			currentTotalmapHeight_px = totalmapHeightPx[0];
+			SetupCoodination(0);
+			// currentPixelZeroX_px = pixelZeroXPx[0];
+			// currentPixelZeroY_px = pixelZeroYPx[0];
+			// currentTotalmapHeight_px = totalmapHeightPx[0];
 			break;
-			
+
 			case ChapterMapTypes.chapter1_3:
-			currentPixelZeroX_px = pixelZeroXPx[0];
-			currentPixelZeroY_px = pixelZeroYPx[0];
-			currentTotalmapHeight_px = totalmapHeightPx[0];
+			SetupCoodination(0);
+			// currentPixelZeroX_px = pixelZeroXPx[0];
+			// currentPixelZeroY_px = pixelZeroYPx[0];
+			// currentTotalmapHeight_px = totalmapHeightPx[0];
 			break;
-			
+
 			case ChapterMapTypes.chapter2_1:
-			currentPixelZeroX_px = pixelZeroXPx[1];
-			currentPixelZeroY_px = pixelZeroYPx[1];
-			currentTotalmapHeight_px = totalmapHeightPx[1];
+			SetupCoodination(1);
+			// currentPixelZeroX_px = pixelZeroXPx[1];
+			// currentPixelZeroY_px = pixelZeroYPx[1];
+			// currentTotalmapHeight_px = totalmapHeightPx[1];
 			break;
-			
+
 			case ChapterMapTypes.chapter2_2:
-			currentPixelZeroX_px = pixelZeroXPx[1];
-			currentPixelZeroY_px = pixelZeroYPx[1];
-			currentTotalmapHeight_px = totalmapHeightPx[1];
+			SetupCoodination(1);
+			// currentPixelZeroX_px = pixelZeroXPx[1];
+			// currentPixelZeroY_px = pixelZeroYPx[1];
+			// currentTotalmapHeight_px = totalmapHeightPx[1];
 			break;
-			
+
 			case ChapterMapTypes.chapter2_3:
-			currentPixelZeroX_px = pixelZeroXPx[1];
-			currentPixelZeroY_px = pixelZeroYPx[1];
-			currentTotalmapHeight_px = totalmapHeightPx[1];
+			SetupCoodination(1);
+			// currentPixelZeroX_px = pixelZeroXPx[1];
+			// currentPixelZeroY_px = pixelZeroYPx[1];
+			// currentTotalmapHeight_px = totalmapHeightPx[1];
 			break;
-			
+
 			case ChapterMapTypes.chapter3_1:
-			currentPixelZeroX_px = pixelZeroXPx[2];
-			currentPixelZeroY_px = pixelZeroYPx[2];
-			currentTotalmapHeight_px = totalmapHeightPx[2];
+			SetupCoodination(2);
+			// currentPixelZeroX_px = pixelZeroXPx[2];
+			// currentPixelZeroY_px = pixelZeroYPx[2];
+			// currentTotalmapHeight_px = totalmapHeightPx[2];
 			break;
-			
+
 			case ChapterMapTypes.chapter3_2:
-			currentPixelZeroX_px = pixelZeroXPx[2];
-			currentPixelZeroY_px = pixelZeroYPx[2];
-			currentTotalmapHeight_px = totalmapHeightPx[2];
+			SetupCoodination(2);
+			// currentPixelZeroX_px = pixelZeroXPx[2];
+			// currentPixelZeroY_px = pixelZeroYPx[2];
+			// currentTotalmapHeight_px = totalmapHeightPx[2];
 			break;
-			
+
 			case ChapterMapTypes.chapter3_3:
-			currentPixelZeroX_px = pixelZeroXPx[2];
-			currentPixelZeroY_px = pixelZeroYPx[2];
-			currentTotalmapHeight_px = totalmapHeightPx[2];
+			SetupCoodination(2);
+			// currentPixelZeroX_px = pixelZeroXPx[2];
+			// currentPixelZeroY_px = pixelZeroYPx[2];
+			// currentTotalmapHeight_px = totalmapHeightPx[2];
 			break;
-			
+
 			default:
 			break;
 		}
 	}
-	
+
 	void Awake() {
 		chapterMapPos = new Vector2[] {
-			new Vector2(294f, 
+			new Vector2(294f,
 				(float)(totalmapHeightPx[0] - chaptermapHeight[0] - 601)),
-			new Vector2(192f, 
+			new Vector2(192f,
 				(float)(totalmapHeightPx[0] - chaptermapHeight[0] - 300)),
-			new Vector2(369f, 
+			new Vector2(369f,
 				(float)(totalmapHeightPx[0] - chaptermapHeight[0] - 0))
-		};		
-		
-		
+		};
+
+
 		unitPerPixelRatio = 33 / 36.2;
-		
+
 		pixelWidth = transform.guiTexture.texture.width * RatioScale;
 		pixelHeight = transform.guiTexture.texture.height * RatioScale;
 		pixelX = -(pixelWidth / 2);
 		pixelY = -(pixelHeight / 2);
-		
+
 		//적용시킨 픽셀인셋
-		transform.guiTexture.pixelInset = new Rect((float)pixelX, 
+		transform.guiTexture.pixelInset = new Rect((float)pixelX,
 			(float)pixelY, (float)pixelWidth, (float)pixelHeight);
-		
+
 		guiWidth = (transform.guiTexture.texture.width * RatioScale) / Screen.width;
 		guiHeight = (transform.guiTexture.texture.height * RatioScale) / Screen.height;
-		
+
 		gui_bottom_left_x = transform.position.x - (guiWidth / 2);
-		gui_bottom_left_y = transform.position.y - (guiHeight / 2);		
+		gui_bottom_left_y = transform.position.y - (guiHeight / 2);
 	}
-	
+
 	// Use this for initialization
-	IEnumerator Start () {	
+	IEnumerator Start () {
 		yield return StartCoroutine(AssignPlayerObject());
 	}
-	
+
 	IEnumerator AssignPlayerObject () {
 		while(Player == null) {
 			Player = GameObject.FindGameObjectWithTag("Player");
 			yield return null;
 		}
-		
+
 		if(Player != null) {
 			ApplyChapterPositionPixel();
 			CalculatePlayerPosition();
@@ -192,26 +209,26 @@ public class MyMiniMap : MonoBehaviour {
 			yield break;
 		}
 	}
-	
+
 	// Update is called once per frame
-	void Update () {	
+	void Update () {
 		if (!canShow) {
 			return;
 		}
-		
+
 		currentAddTimeDisplayingDotEnemies += Time.deltaTime;
 		if(currentAddTimeDisplayingDotEnemies > refeshTimeDisplayingDotEnemies) {
 			CalculatePlayerPosition();
 			DisplayDotEnemies();
 			currentAddTimeDisplayingDotEnemies = 0;
 		}
-		
+
 	}
-	
+
 	void OnGUI() {
-		
+
 	}
-	
+
 	/// <summary>
 	/// 변경된 챕터맵에 따라 챕터맵의 텍스쳐와 좌표값들을 변경한다.
 	/// 이 메소드를 호출하기전에 chapterMapType의 값을 원하는 챕터의 enum값으로 변경해야한다.
@@ -219,40 +236,40 @@ public class MyMiniMap : MonoBehaviour {
 	public void ApplyChapterPositionPixel ()
 	{
 		int index_chapter_map;
-		
+
 		switch (ChapterMapType) {
 			case ChapterMapTypes.chapter1_1:
-			index_chapter_map = (int)ChapterMapTypes.chapter1_1;			
-			break;	
-			
+			index_chapter_map = (int)ChapterMapTypes.chapter1_1;
+			break;
+
 			case ChapterMapTypes.chapter1_2:
-			index_chapter_map = (int)ChapterMapTypes.chapter1_2;			
+			index_chapter_map = (int)ChapterMapTypes.chapter1_2;
 			break;
-			
+
 			case ChapterMapTypes.chapter1_3:
-			index_chapter_map = (int)ChapterMapTypes.chapter1_3;			
+			index_chapter_map = (int)ChapterMapTypes.chapter1_3;
 			break;
-			
+
 			default:
 			index_chapter_map = (int)ChapterMapTypes.chapter1_1;
-			break;			
+			break;
 		}
-		
+
 		chaptermapPosXPx = (int)chapterMapPos[index_chapter_map].x;
 		chaptermapPosYPx = (int)chapterMapPos[index_chapter_map].y;
 		guiTexture.texture = ChapterMaps[index_chapter_map];
-	}	
-	
+	}
+
 	/// <summary>
-	/// 미니맵을 화면에 보이게 하거나 숨기기	
+	/// 미니맵을 화면에 보이게 하거나 숨기기
 	/// </summary>
 	/// <param name='canControl'>
 	/// 파라미터 값에 따라 화면에 보여주기를 판단한다.
 	/// </param>
-	public void EnableMiniMap(bool canControl) {		
+	public void EnableMiniMap(bool canControl) {
 		gameObject.SetActiveRecursively(canControl);
-		canShow = canControl;		
-		
+		canShow = canControl;
+
 		if(!canControl) {
 			DestoryAllDotEnemy();
 			PlayerDotGUI.SetActiveRecursively(false);
@@ -261,8 +278,8 @@ public class MyMiniMap : MonoBehaviour {
 			DisplayDotEnemies();
 			PlayerDotGUI.SetActiveRecursively(true);
 		}
-	}	
-	
+	}
+
 	/// <summary>
 	/// 현재 미니맵이 화면에 나타나고 있는지 여부를 알려준다
 	/// </summary>
@@ -272,45 +289,45 @@ public class MyMiniMap : MonoBehaviour {
 	public bool GetShowState() {
 		return canShow;
 	}
-	
+
 	void CalculatePlayerPosition ()
 	{
 		PlayerPosition = new Vector3(Player.transform.position.x,
 		Player.transform.position.y, Player.transform.position.z);
-		
-		SetupPositions();		
-		
-		converted_totalmap_player_pos_x_px = 
+
+		SetupPositions();
+
+		converted_totalmap_player_pos_x_px =
 			PlayerPosition.x * unitPerPixelRatio + currentPixelZeroX_px;
-		converted_totalmap_player_pos_y_px = 
+		converted_totalmap_player_pos_y_px =
 			PlayerPosition.z * unitPerPixelRatio + currentTotalmapHeight_px - currentPixelZeroY_px;
-		converted_chaptermap_player_pos_x_px = 
+		converted_chaptermap_player_pos_x_px =
 			converted_totalmap_player_pos_x_px - chaptermapPosXPx;
-		converted_chaptermap_player_pos_y_px = 
+		converted_chaptermap_player_pos_y_px =
 			converted_totalmap_player_pos_y_px - chaptermapPosYPx;
-		gui_chaptermap_player_pos_x_scale = 
+		gui_chaptermap_player_pos_x_scale =
 			converted_chaptermap_player_pos_x_px * RatioScale / Screen.width + gui_bottom_left_x;
-		gui_chaptermap_player_pos_y_scale = 
+		gui_chaptermap_player_pos_y_scale =
 			converted_chaptermap_player_pos_y_px * RatioScale / Screen.height + gui_bottom_left_y;
-		
+
 		PlayerDotGUI.transform.position = new Vector3(
-			(float)gui_chaptermap_player_pos_x_scale, 
+			(float)gui_chaptermap_player_pos_x_scale,
 			(float)gui_chaptermap_player_pos_y_scale, 1f);
 	}
-	
+
 	void DisplayDotEnemies() {
 		DestoryAllDotEnemy();
-		
+
 		GameObject[] enemies;
 		enemies = GameObject.FindGameObjectsWithTag("Enemy");
-		
+
 		if (enemies.Length == 0) return;
-		
+
 		foreach(GameObject go in enemies) {
 			Vector2 cal_enemy_pos = CalculateEnemyPosition(go.transform.position);
-			if(cal_enemy_pos.x < gui_bottom_left_x 
+			if(cal_enemy_pos.x < gui_bottom_left_x
 				|| cal_enemy_pos.y < gui_bottom_left_y
-				|| cal_enemy_pos.x > gui_bottom_left_x + guiWidth 
+				|| cal_enemy_pos.x > gui_bottom_left_x + guiWidth
 				|| cal_enemy_pos.y > gui_bottom_left_y + guiHeight) {
 				continue;
 			}
@@ -320,33 +337,33 @@ public class MyMiniMap : MonoBehaviour {
 			dot_enemy_prefab.transform.parent = DotEnemies.transform;
 		}
 	}
-	
+
 	Vector2 CalculateEnemyPosition (Vector3 pos) {
-		SetupPositions();		
-		double converted_totalmap_enemy_pos_x_px = 
+		SetupPositions();
+		double converted_totalmap_enemy_pos_x_px =
 			pos.x * unitPerPixelRatio + currentPixelZeroX_px;
-		double converted_totalmap_enemy_pos_y_px = 
+		double converted_totalmap_enemy_pos_y_px =
 			pos.z * unitPerPixelRatio + currentTotalmapHeight_px - currentPixelZeroY_px;
-		double converted_chaptermap_enemy_pos_x_px = 
+		double converted_chaptermap_enemy_pos_x_px =
 			converted_totalmap_enemy_pos_x_px - chaptermapPosXPx;
-		double converted_chaptermap_enemy_pos_y_px = 
+		double converted_chaptermap_enemy_pos_y_px =
 			converted_totalmap_enemy_pos_y_px - chaptermapPosYPx;
-		double gui_chaptermap_enemy_pos_x_scale = 
+		double gui_chaptermap_enemy_pos_x_scale =
 			converted_chaptermap_enemy_pos_x_px * RatioScale / Screen.width + gui_bottom_left_x;
-		double gui_chaptermap_enemy_pos_y_scale = 
-			converted_chaptermap_enemy_pos_y_px * RatioScale / Screen.height + gui_bottom_left_y;		
-		
+		double gui_chaptermap_enemy_pos_y_scale =
+			converted_chaptermap_enemy_pos_y_px * RatioScale / Screen.height + gui_bottom_left_y;
+
 		return new Vector2(
-			(float)gui_chaptermap_enemy_pos_x_scale, 
-			(float)gui_chaptermap_enemy_pos_y_scale);		
+			(float)gui_chaptermap_enemy_pos_x_scale,
+			(float)gui_chaptermap_enemy_pos_y_scale);
 	}
-	
-	
+
+
 	/// <summary>
 	/// 맵에 보이는 전체 몬스터의 점들을 없앤다.
 	/// </summary>
 	void DestoryAllDotEnemy() {
-		
+
 		foreach(Transform child in DotEnemies.transform) {
 			Destroy(child.gameObject);
 		}
