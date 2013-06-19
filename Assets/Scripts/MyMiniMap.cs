@@ -2,34 +2,44 @@
 using System.Collections;
 
 #region FileDescription
-	// 챕터맵
-	// 유니티상의 좌표(0, Y, 0) -> 픽셀 좌표(451, 883), 픽셀좌표 기준(왼쪽, 위)가 (0, 0)
-	// 픽셀좌표 기준을 변경 (왼쪽, 아래)가 (0, 0)
-	// (451, 883) -> (451, 923 - 883) -> (451, 40)
-	// 이미지상의 픽셀 비교할 픽셀 좌표들 : (451, 883), (418, 148)
-	// 유니티상의 비교 좌표들(0, Y, 0), (-36.2, Y, 834.6)
-	// 픽셀상의 차이 : 유니티상의 차이 = X : 1
-	// 33 : 36.2 = X : 1
-	// X = 33 / 36.2 => 1유니티상의 픽셀거리
-	// 첫번째 챕터맵의 좌표
-	// 원래 픽셀상의 좌표(294, 601)
-	// 기준좌표계를 아래 왼쪽으로 바꿈 (294, 923 - 601) -> (294, 322)
-	// (294, 322)
-	// 화면에 보이는 비율로 변환한 좌표
-	// (294 * ratio, 322, * ratio) -> (117.6, 128.8)
+// 챕터맵
+// 유니티상의 좌표(0, Y, 0) -> 픽셀 좌표(451, 883), 픽셀좌표 기준(왼쪽, 위)가 (0, 0)
+// 픽셀좌표 기준을 변경 (왼쪽, 아래)가 (0, 0)
+// (451, 883) -> (451, 923 - 883) -> (451, 40)
+// 이미지상의 픽셀 비교할 픽셀 좌표들 : (451, 883), (418, 148)
+// 유니티상의 비교 좌표들(0, Y, 0), (-36.2, Y, 834.6)
+// 픽셀상의 차이 : 유니티상의 차이 = X : 1
+// 33 : 36.2 = X : 1
+// X = 33 / 36.2 => 1유니티상의 픽셀거리
+// 첫번째 챕터맵의 좌표
+// 원래 픽셀상의 좌표(294, 601)
+// 기준좌표계를 아래 왼쪽으로 바꿈 (294, 923 - 601) -> (294, 322)
+// (294, 322)
+// 화면에 보이는 비율로 변환한 좌표
+// (294 * ratio, 322, * ratio) -> (117.6, 128.8)
 #endregion
-
-public class MyMiniMap : MonoBehaviour {
-	public enum ChapterMapTypes { // 챕터맵의 종류
-		chapter1_1,
-		chapter1_2,
-		chapter1_3,
-		chapter2_1,
-		chapter2_2,
-		chapter2_3,
-		chapter3_1,
-		chapter3_2,
-		chapter3_3,
+public class MyMiniMap : MonoBehaviour
+{
+	public enum ChapterMapTypes
+	{ // 챕터맵의 종류
+		chapter1_1
+,
+		chapter1_2
+,
+		chapter1_3
+,
+		chapter2_1
+,
+		chapter2_2
+,
+		chapter2_3
+,
+		chapter3_1
+,
+		chapter3_2
+,
+		chapter3_3
+,
 	};
 
 	private int[] totalmapWidthPx = {923, 923, 923};// 전체 맵의 픽셀 너비 923 픽셀
@@ -44,7 +54,7 @@ public class MyMiniMap : MonoBehaviour {
 	private double[] unitPerPixelRatioArray = {33 / 36.2};
 	private Vector2[] chapterMapPos;// 챕터맵별로 적용되는 위치값배열
 
-	public ChapterMapTypes ChapterMapType = ChapterMapTypes.chapter1_1;
+	public ChapterMapTypes chapterMapType = ChapterMapTypes.chapter1_1;
 	public GameObject PlayerDotGUI;// 플레이어의 닷 GUI 게임오브젝트
 	public GameObject Player;// 플레이어 게임오브젝트
 
@@ -93,7 +103,7 @@ public class MyMiniMap : MonoBehaviour {
 	}
 
 	private void SetupPositions() {
-		switch (ChapterMapType) {
+		switch (chapterMapType) {
 			case ChapterMapTypes.chapter1_1:
 			SetupCoodination(0);
 			// currentPixelZeroX_px = pixelZeroXPx[0];
@@ -235,29 +245,29 @@ public class MyMiniMap : MonoBehaviour {
 	/// </summary>
 	public void ApplyChapterPositionPixel ()
 	{
-		int index_chapter_map;
+//		int index_chapter_map;
+//
+//		switch (chapterMapType) {
+//			case ChapterMapTypes.chapter1_1:
+//			index_chapter_map = (int)ChapterMapTypes.chapter1_1;
+//			break;
+//
+//			case ChapterMapTypes.chapter1_2:
+//			index_chapter_map = (int)ChapterMapTypes.chapter1_2;
+//			break;
+//
+//			case ChapterMapTypes.chapter1_3:
+//			index_chapter_map = (int)ChapterMapTypes.chapter1_3;
+//			break;
+//
+//			default:
+//			index_chapter_map = (int)ChapterMapTypes.chapter1_1;
+//			break;
+//		}
 
-		switch (ChapterMapType) {
-			case ChapterMapTypes.chapter1_1:
-			index_chapter_map = (int)ChapterMapTypes.chapter1_1;
-			break;
-
-			case ChapterMapTypes.chapter1_2:
-			index_chapter_map = (int)ChapterMapTypes.chapter1_2;
-			break;
-
-			case ChapterMapTypes.chapter1_3:
-			index_chapter_map = (int)ChapterMapTypes.chapter1_3;
-			break;
-
-			default:
-			index_chapter_map = (int)ChapterMapTypes.chapter1_1;
-			break;
-		}
-
-		chaptermapPosXPx = (int)chapterMapPos[index_chapter_map].x;
-		chaptermapPosYPx = (int)chapterMapPos[index_chapter_map].y;
-		guiTexture.texture = ChapterMaps[index_chapter_map];
+		chaptermapPosXPx = (int)chapterMapPos[(int)chapterMapType].x;
+		chaptermapPosYPx = (int)chapterMapPos[(int)chapterMapType].y;
+		guiTexture.texture = ChapterMaps[(int)chapterMapType];
 	}
 
 	/// <summary>
