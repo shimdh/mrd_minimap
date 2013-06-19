@@ -54,7 +54,15 @@ public class MyMiniMap : MonoBehaviour
 	private double[] unitPerPixelRatioArray = {33 / 36.2};
 	private Vector2[] chapterMapPos;// 챕터맵별로 적용되는 위치값배열
 
-	public ChapterMapTypes chapterMapType = ChapterMapTypes.chapter1_1;
+	private ChapterMapTypes _chapterMapType = ChapterMapTypes.chapter1_1;
+	public ChapterMapTypes chapterMapType {
+		get{ return this._chapterMapType;}
+		set{ 
+			this._chapterMapType = value;
+			this.ApplyChapterPositionPixel();
+		}
+	}
+
 	public GameObject PlayerDotGUI;// 플레이어의 닷 GUI 게임오브젝트
 	public GameObject Player;// 플레이어 게임오브젝트
 
@@ -106,65 +114,38 @@ public class MyMiniMap : MonoBehaviour
 		switch (chapterMapType) {
 			case ChapterMapTypes.chapter1_1:
 			SetupCoodination(0);
-			// currentPixelZeroX_px = pixelZeroXPx[0];
-			// currentPixelZeroY_px = pixelZeroYPx[0];
-			// currentTotalmapHeight_px = totalmapHeightPx[0];
 			break;
 
 			case ChapterMapTypes.chapter1_2:
 			SetupCoodination(0);
-			// currentPixelZeroX_px = pixelZeroXPx[0];
-			// currentPixelZeroY_px = pixelZeroYPx[0];
-			// currentTotalmapHeight_px = totalmapHeightPx[0];
 			break;
 
 			case ChapterMapTypes.chapter1_3:
 			SetupCoodination(0);
-			// currentPixelZeroX_px = pixelZeroXPx[0];
-			// currentPixelZeroY_px = pixelZeroYPx[0];
-			// currentTotalmapHeight_px = totalmapHeightPx[0];
 			break;
 
 			case ChapterMapTypes.chapter2_1:
 			SetupCoodination(1);
-			// currentPixelZeroX_px = pixelZeroXPx[1];
-			// currentPixelZeroY_px = pixelZeroYPx[1];
-			// currentTotalmapHeight_px = totalmapHeightPx[1];
 			break;
 
 			case ChapterMapTypes.chapter2_2:
 			SetupCoodination(1);
-			// currentPixelZeroX_px = pixelZeroXPx[1];
-			// currentPixelZeroY_px = pixelZeroYPx[1];
-			// currentTotalmapHeight_px = totalmapHeightPx[1];
 			break;
 
 			case ChapterMapTypes.chapter2_3:
 			SetupCoodination(1);
-			// currentPixelZeroX_px = pixelZeroXPx[1];
-			// currentPixelZeroY_px = pixelZeroYPx[1];
-			// currentTotalmapHeight_px = totalmapHeightPx[1];
 			break;
 
 			case ChapterMapTypes.chapter3_1:
 			SetupCoodination(2);
-			// currentPixelZeroX_px = pixelZeroXPx[2];
-			// currentPixelZeroY_px = pixelZeroYPx[2];
-			// currentTotalmapHeight_px = totalmapHeightPx[2];
 			break;
 
 			case ChapterMapTypes.chapter3_2:
 			SetupCoodination(2);
-			// currentPixelZeroX_px = pixelZeroXPx[2];
-			// currentPixelZeroY_px = pixelZeroYPx[2];
-			// currentTotalmapHeight_px = totalmapHeightPx[2];
 			break;
 
 			case ChapterMapTypes.chapter3_3:
 			SetupCoodination(2);
-			// currentPixelZeroX_px = pixelZeroXPx[2];
-			// currentPixelZeroY_px = pixelZeroYPx[2];
-			// currentTotalmapHeight_px = totalmapHeightPx[2];
 			break;
 
 			default:
@@ -245,26 +226,6 @@ public class MyMiniMap : MonoBehaviour
 	/// </summary>
 	public void ApplyChapterPositionPixel ()
 	{
-//		int index_chapter_map;
-//
-//		switch (chapterMapType) {
-//			case ChapterMapTypes.chapter1_1:
-//			index_chapter_map = (int)ChapterMapTypes.chapter1_1;
-//			break;
-//
-//			case ChapterMapTypes.chapter1_2:
-//			index_chapter_map = (int)ChapterMapTypes.chapter1_2;
-//			break;
-//
-//			case ChapterMapTypes.chapter1_3:
-//			index_chapter_map = (int)ChapterMapTypes.chapter1_3;
-//			break;
-//
-//			default:
-//			index_chapter_map = (int)ChapterMapTypes.chapter1_1;
-//			break;
-//		}
-
 		chaptermapPosXPx = (int)chapterMapPos[(int)chapterMapType].x;
 		chaptermapPosYPx = (int)chapterMapPos[(int)chapterMapType].y;
 		guiTexture.texture = ChapterMaps[(int)chapterMapType];
