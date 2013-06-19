@@ -1,0 +1,181 @@
+ApplyChapterPositionPixel	Assets\Scripts\MyMiniMap.cs	/^	public void ApplyChapterPositionPixel ()$/;"	m	class:MyMiniMap
+AssignPlayerObject	Assets\Scripts\MyMiniMap.cs	/^	IEnumerator AssignPlayerObject () {$/;"	m	class:MyMiniMap	file:
+Awake	Assets\Scripts\MyMiniMap.cs	/^	void Awake() {$/;"	m	class:MyMiniMap	file:
+CalculateEnemyPosition	Assets\Scripts\MyMiniMap.cs	/^	Vector2 CalculateEnemyPosition (Vector3 pos) {$/;"	m	class:MyMiniMap	file:
+CalculatePlayerPosition	Assets\Scripts\MyMiniMap.cs	/^	void CalculatePlayerPosition ()$/;"	m	class:MyMiniMap	file:
+ChapterMapType	Assets\Scripts\MyMiniMap.cs	/^	public ChapterMapTypes ChapterMapType = ChapterMapTypes.chapter1_1;$/;"	f	class:MyMiniMap
+ChapterMapTypes	Assets\Scripts\MyMiniMap.cs	/^	public enum ChapterMapTypes {\/\/ 챕터맵의 종류$/;"	g	class:MyMiniMap
+ChapterMaps	Assets\Scripts\MyMiniMap.cs	/^	public Texture[] ChapterMaps;\/\/ 챕터맵들의 텍스쳐배열$/;"	f	class:MyMiniMap
+DestoryAllDotEnemy	Assets\Scripts\MyMiniMap.cs	/^	void DestoryAllDotEnemy() {$/;"	m	class:MyMiniMap	file:
+DisplayDotEnemies	Assets\Scripts\MyMiniMap.cs	/^	void DisplayDotEnemies() {$/;"	m	class:MyMiniMap	file:
+DotEnemies	Assets\Scripts\MyMiniMap.cs	/^	public GameObject DotEnemies;\/\/ 몬스터 점들을 관리하는 부모오브젝트$/;"	f	class:MyMiniMap
+DotEnemyPrefab	Assets\Scripts\MyMiniMap.cs	/^	public GameObject DotEnemyPrefab;\/\/ 몬스터 점의 프리팹$/;"	f	class:MyMiniMap
+EnableMiniMap	Assets\Scripts\MyMiniMap.cs	/^	public void EnableMiniMap(bool canControl) {		$/;"	m	class:MyMiniMap
+GetShowState	Assets\Scripts\MyMiniMap.cs	/^	public bool GetShowState() {$/;"	m	class:MyMiniMap
+MyMiniMap	Assets\Scripts\MyMiniMap.cs	/^public class MyMiniMap : MonoBehaviour {$/;"	c
+OnGUI	Assets\Scripts\MyMiniMap.cs	/^	void OnGUI() {$/;"	m	class:MyMiniMap	file:
+Player	Assets\Scripts\MyMiniMap.cs	/^	public GameObject Player;\/\/ 플레이어 게임오브젝트$/;"	f	class:MyMiniMap
+PlayerDotGUI	Assets\Scripts\MyMiniMap.cs	/^	public GameObject PlayerDotGUI;\/\/ 플레이어의 닷 GUI 게임오브젝트$/;"	f	class:MyMiniMap
+PlayerPosition	Assets\Scripts\MyMiniMap.cs	/^	private Vector3 PlayerPosition;\/\/ 플레이어의 좌표값을 변수에 대입$/;"	f	class:MyMiniMap	file:
+RatioScale	Assets\Scripts\MyMiniMap.cs	/^	public float RatioScale = 0.4f;$/;"	f	class:MyMiniMap
+SetupPositions	Assets\Scripts\MyMiniMap.cs	/^	private void SetupPositions() {$/;"	m	class:MyMiniMap	file:
+Start	Assets\Scripts\MyMiniMap.cs	/^	IEnumerator Start () {	$/;"	m	class:MyMiniMap	file:
+Update	Assets\Scripts\MyMiniMap.cs	/^	void Update () {	$/;"	m	class:MyMiniMap	file:
+canShow	Assets\Scripts\MyMiniMap.cs	/^	private bool canShow = true;$/;"	f	class:MyMiniMap	file:
+chapter1_1	Assets\Scripts\MyMiniMap.cs	/^		chapter1_1,$/;"	e	enum:MyMiniMap.ChapterMapTypes	file:
+chapter1_2	Assets\Scripts\MyMiniMap.cs	/^		chapter1_2,$/;"	e	enum:MyMiniMap.ChapterMapTypes	file:
+chapter1_3	Assets\Scripts\MyMiniMap.cs	/^		chapter1_3,$/;"	e	enum:MyMiniMap.ChapterMapTypes	file:
+chapter2_1	Assets\Scripts\MyMiniMap.cs	/^		chapter2_1,$/;"	e	enum:MyMiniMap.ChapterMapTypes	file:
+chapter2_2	Assets\Scripts\MyMiniMap.cs	/^		chapter2_2,$/;"	e	enum:MyMiniMap.ChapterMapTypes	file:
+chapter2_3	Assets\Scripts\MyMiniMap.cs	/^		chapter2_3,$/;"	e	enum:MyMiniMap.ChapterMapTypes	file:
+chapter3_1	Assets\Scripts\MyMiniMap.cs	/^		chapter3_1,$/;"	e	enum:MyMiniMap.ChapterMapTypes	file:
+chapter3_2	Assets\Scripts\MyMiniMap.cs	/^		chapter3_2,$/;"	e	enum:MyMiniMap.ChapterMapTypes	file:
+chapter3_3	Assets\Scripts\MyMiniMap.cs	/^		chapter3_3,$/;"	e	enum:MyMiniMap.ChapterMapTypes	file:
+chapterMapPos	Assets\Scripts\MyMiniMap.cs	/^	private Vector2[] chapterMapPos;\/\/ 챕터맵별로 적용되는 위치값배열$/;"	f	class:MyMiniMap	file:
+chaptermapHeight	Assets\Scripts\MyMiniMap.cs	/^	private int[] chaptermapHeight = {314, 314, 314};\/\/ 챕터 맵의 픽셀 높이 314 픽셀$/;"	f	class:MyMiniMap	file:
+chaptermapPosXPx	Assets\Scripts\MyMiniMap.cs	/^	private int chaptermapPosXPx;\/\/ 챕터맵의 왼쪽 아래부분의 X좌표(0,0)을 왼쪽 아래로 기준으로 함$/;"	f	class:MyMiniMap	file:
+chaptermapPosYPx	Assets\Scripts\MyMiniMap.cs	/^	private int chaptermapPosYPx;\/\/ 챕터맵의 왼쪽 아래부분의 Y좌표(0,0)을 왼쪽 아래로 기준으로 함$/;"	f	class:MyMiniMap	file:
+chaptermapWidth	Assets\Scripts\MyMiniMap.cs	/^	private int[] chaptermapWidth = {314, 314, 314};\/\/ 챕터 맵의 픽셀 너비 314 픽셀$/;"	f	class:MyMiniMap	file:
+converted_chaptermap_player_pos_x_px	Assets\Scripts\MyMiniMap.cs	/^	private double converted_chaptermap_player_pos_x_px;\/\/ converted_totalmap_player_pos_x_px 를 챕터맵을 기준좌표로 바꾼 X좌표$/;"	f	class:MyMiniMap	file:
+converted_chaptermap_player_pos_y_px	Assets\Scripts\MyMiniMap.cs	/^	private double converted_chaptermap_player_pos_y_px;\/\/ converted_totalmap_player_pos_y_px 를 챕터맵을 기준좌표로 바꾼 Y좌표$/;"	f	class:MyMiniMap	file:
+converted_totalmap_player_pos_x_px	Assets\Scripts\MyMiniMap.cs	/^	private double converted_totalmap_player_pos_x_px;\/\/ 유니티상의 좌표를 전체맵상에서의 이미지좌표에서 (0,0)을 왼쪽아래를 기준으로 바꾼 X좌표$/;"	f	class:MyMiniMap	file:
+converted_totalmap_player_pos_y_px	Assets\Scripts\MyMiniMap.cs	/^	private double converted_totalmap_player_pos_y_px;\/\/ 유니티상의 좌표를 전체맵상에서의 이미지좌표에서 (0,0)을 왼쪽아래를 기준으로 바꾼 y좌표$/;"	f	class:MyMiniMap	file:
+currentAddTimeDisplayingDotEnemies	Assets\Scripts\MyMiniMap.cs	/^	private float currentAddTimeDisplayingDotEnemies = 0;	$/;"	f	class:MyMiniMap	file:
+currentPixelZeroX_px	Assets\Scripts\MyMiniMap.cs	/^	private int currentPixelZeroX_px = 0;$/;"	f	class:MyMiniMap	file:
+currentPixelZeroY_px	Assets\Scripts\MyMiniMap.cs	/^	private int currentPixelZeroY_px = 0;$/;"	f	class:MyMiniMap	file:
+currentTotalmapHeight_px	Assets\Scripts\MyMiniMap.cs	/^	private int currentTotalmapHeight_px = 0;	$/;"	f	class:MyMiniMap	file:
+guiHeight	Assets\Scripts\MyMiniMap.cs	/^	private double guiHeight;\/\/ 0과 1사이의 GUI좌표값으로의 텍스처의 높이(GUI상의 높이)$/;"	f	class:MyMiniMap	file:
+guiWidth	Assets\Scripts\MyMiniMap.cs	/^	private double guiWidth;\/\/ 0과 1사이의 GUI좌표값으로의 텍스쳐의 너비(GUI상의 너비)$/;"	f	class:MyMiniMap	file:
+gui_bottom_left_x	Assets\Scripts\MyMiniMap.cs	/^	private double gui_bottom_left_x;\/\/ 0과 1사이의 GUI좌표값으로의 텍스쳐의 아래왼쪽의 X좌표(GUI상의 X좌표)$/;"	f	class:MyMiniMap	file:
+gui_bottom_left_y	Assets\Scripts\MyMiniMap.cs	/^	private double gui_bottom_left_y;\/\/ 0과 1사이의 GUI좌표값으로의 텍스쳐의 아래왼쪽의 Y좌표(GUI상의 Y좌표)$/;"	f	class:MyMiniMap	file:
+gui_chaptermap_player_pos_x_scale	Assets\Scripts\MyMiniMap.cs	/^	private double gui_chaptermap_player_pos_x_scale;\/\/gui상의 0과 1사이의 좌표계로 변환한 X좌표(scale 적용, gui상의 챕터맵의 왼쪽 오른쪽 좌표도 적용)$/;"	f	class:MyMiniMap	file:
+gui_chaptermap_player_pos_y_scale	Assets\Scripts\MyMiniMap.cs	/^	private double gui_chaptermap_player_pos_y_scale;\/\/gui상의 0과 1사이의 좌표계로 변환한 Y좌표(scale 적용, gui상의 챕터맵의 왼쪽 오른쪽 좌표도 적용)$/;"	f	class:MyMiniMap	file:
+pixelHeight	Assets\Scripts\MyMiniMap.cs	/^	private double pixelHeight;\/\/ 원본 픽셀에 픽셀 비율을 적용한 픽셀 높이$/;"	f	class:MyMiniMap	file:
+pixelWidth	Assets\Scripts\MyMiniMap.cs	/^	private double pixelWidth;\/\/ 원본 픽셀에 픽셀 비율을 적용한 픽셀 너비$/;"	f	class:MyMiniMap	file:
+pixelX	Assets\Scripts\MyMiniMap.cs	/^	private double pixelX;\/\/ 적용된 픽셀의 너비를 바탕으로 한 픽셀의 X 좌표$/;"	f	class:MyMiniMap	file:
+pixelY	Assets\Scripts\MyMiniMap.cs	/^	private double pixelY;\/\/ 적용된 픽셀의 높이를 바탕으로 한 픽셀의 Y 좌표$/;"	f	class:MyMiniMap	file:
+pixelZeroXPx	Assets\Scripts\MyMiniMap.cs	/^	private int[] pixelZeroXPx = {451, 451, 451};\/\/ 전체이미지맵에서의 픽셀 X좌표$/;"	f	class:MyMiniMap	file:
+pixelZeroYPx	Assets\Scripts\MyMiniMap.cs	/^	private int[] pixelZeroYPx = {883, 883, 883};\/\/ 전체이미지맵에서의 픽셀 X좌표$/;"	f	class:MyMiniMap	file:
+refeshTimeDisplayingDotEnemies	Assets\Scripts\MyMiniMap.cs	/^	public float refeshTimeDisplayingDotEnemies = 2;$/;"	f	class:MyMiniMap
+totalmapHeightPx	Assets\Scripts\MyMiniMap.cs	/^	private int[] totalmapHeightPx = {923, 923, 923};\/\/ 전체 맵의 픽셀 높이 923 픽셀$/;"	f	class:MyMiniMap	file:
+totalmapWidthPx	Assets\Scripts\MyMiniMap.cs	/^	private int[] totalmapWidthPx = {923, 923, 923};\/\/ 전체 맵의 픽셀 너비 923 픽셀$/;"	f	class:MyMiniMap	file:
+unitPerPixelRatio	Assets\Scripts\MyMiniMap.cs	/^	private double unitPerPixelRatio;\/\/ 1유니티상의 픽셀거리	$/;"	f	class:MyMiniMap	file:
+Start	Assets\Scripts\TestMiniMap.cs	/^	void Start () {$/;"	m	class:TestMiniMap	file:
+TestMiniMap	Assets\Scripts\TestMiniMap.cs	/^public class TestMiniMap : MonoBehaviour {$/;"	c
+Update	Assets\Scripts\TestMiniMap.cs	/^	void Update () {$/;"	m	class:TestMiniMap	file:
+miniMap	Assets\Scripts\TestMiniMap.cs	/^	private MyMiniMap miniMap;$/;"	f	class:TestMiniMap	file:
+Awake	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^function Awake () {$/;"	f
+CalculateJumpVerticalSpeed	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^function CalculateJumpVerticalSpeed (targetJumpHeight : float) {$/;"	f
+FixedUpdate	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^function FixedUpdate () {$/;"	f
+GetDirection	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^function GetDirection () {$/;"	f
+IsGrounded	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^function IsGrounded () {$/;"	f
+IsJumping	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^function IsJumping () {$/;"	f
+IsSliding	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^function IsSliding () {$/;"	f
+IsTouchingCeiling	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^function IsTouchingCeiling () {$/;"	f
+OnControllerColliderHit	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^function OnControllerColliderHit (hit : ControllerColliderHit) {$/;"	f
+SetControllable	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^function SetControllable (controllable : boolean) {$/;"	f
+SetVelocity	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^function SetVelocity (velocity : Vector3) {$/;"	f
+TooSteep	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^function TooSteep () {$/;"	f
+Update	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^function Update () {$/;"	f
+baseHeight	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^	var baseHeight : float = 1.0;$/;"	v
+currentMovementOffset	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^	var currentMovementOffset : Vector3 = velocity * Time.deltaTime;$/;"	v
+desiredVelocity	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^	var desiredVelocity : Vector3;$/;"	v
+extraHeight	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^	var extraHeight : float = 4.1;$/;"	v
+gravity	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^	var gravity : float = 10.0;$/;"	v
+jumping	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^var jumping : CharacterMotorJumping = CharacterMotorJumping();$/;"	v
+lastPosition	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^	var lastPosition : Vector3 = tr.position;$/;"	v
+maxAirAcceleration	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^	var maxAirAcceleration : float = 20.0;$/;"	v
+maxBackwardsSpeed	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^	var maxBackwardsSpeed : float = 10.0;$/;"	v
+maxFallSpeed	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^	var maxFallSpeed : float = 20.0;$/;"	v
+maxGroundAcceleration	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^	var maxGroundAcceleration : float = 30.0;$/;"	v
+maxSidewaysSpeed	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^	var maxSidewaysSpeed : float = 10.0;$/;"	v
+maxSpeed	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^	var maxSpeed : float = MaxSpeedInDirection(desiredLocalDirection);$/;"	v
+moveDistance	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^	var moveDistance : Vector3 = Vector3.zero;$/;"	v
+movement	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^var movement : CharacterMotorMovement = CharacterMotorMovement();$/;"	v
+movementTransfer	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^	var movementTransfer : MovementTransferOnJump = MovementTransferOnJump.PermaTransfer;$/;"	v
+movingPlatform	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^var movingPlatform : CharacterMotorMovingPlatform = CharacterMotorMovingPlatform();$/;"	v
+perpAmount	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^	var perpAmount : float = 0.0;$/;"	v
+pushDownOffset	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^	var pushDownOffset : float = Mathf.Max(controller.stepOffset, Vector3(currentMovementOffset.x, 0, currentMovementOffset.z).magnitude);$/;"	v
+sidewaysControl	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^	var sidewaysControl : float = 1.0;$/;"	v
+sliding	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^var sliding : CharacterMotorSliding = CharacterMotorSliding();$/;"	v
+slidingSpeed	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^	var slidingSpeed : float = 15;$/;"	v
+slopeSpeedMultiplier	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^	var slopeSpeedMultiplier : AnimationCurve = AnimationCurve(Keyframe(-90, 1), Keyframe(0, 1), Keyframe(90, 0));$/;"	v
+speedControl	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^	var speedControl : float = 0.4;$/;"	v
+steepPerpAmount	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^	var steepPerpAmount : float = 0.5;$/;"	v
+useFixedUpdate	Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js	/^var useFixedUpdate : boolean = true;$/;"	v
+Awake	Assets\Standard Assets\Character Controllers\Sources\Scripts\FPSInputController.js	/^function Awake () {$/;"	f
+Update	Assets\Standard Assets\Character Controllers\Sources\Scripts\FPSInputController.js	/^function Update () {$/;"	f
+MouseLook	Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs	/^public class MouseLook : MonoBehaviour {$/;"	c
+MouseX	Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs	/^	public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }$/;"	e	enum:MouseLook.RotationAxes	file:
+MouseXAndY	Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs	/^	public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }$/;"	e	enum:MouseLook.RotationAxes	file:
+MouseY	Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs	/^	public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }$/;"	e	enum:MouseLook.RotationAxes	file:
+RotationAxes	Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs	/^	public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }$/;"	g	class:MouseLook
+Start	Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs	/^	void Start ()$/;"	m	class:MouseLook	file:
+Update	Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs	/^	void Update ()$/;"	m	class:MouseLook	file:
+axes	Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs	/^	public RotationAxes axes = RotationAxes.MouseXAndY;$/;"	f	class:MouseLook
+maximumX	Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs	/^	public float maximumX = 360F;$/;"	f	class:MouseLook
+maximumY	Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs	/^	public float maximumY = 60F;$/;"	f	class:MouseLook
+minimumX	Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs	/^	public float minimumX = -360F;$/;"	f	class:MouseLook
+minimumY	Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs	/^	public float minimumY = -60F;$/;"	f	class:MouseLook
+rotationY	Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs	/^	float rotationY = 0F;$/;"	f	class:MouseLook	file:
+sensitivityX	Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs	/^	public float sensitivityX = 15F;$/;"	f	class:MouseLook
+sensitivityY	Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs	/^	public float sensitivityY = 15F;$/;"	f	class:MouseLook
+Awake	Assets\Standard Assets\Character Controllers\Sources\Scripts\PlatformInputController.js	/^function Awake () {$/;"	f
+ConstantSlerp	Assets\Standard Assets\Character Controllers\Sources\Scripts\PlatformInputController.js	/^function ConstantSlerp (from : Vector3, to : Vector3, angle : float) {$/;"	f
+ProjectOntoPlane	Assets\Standard Assets\Character Controllers\Sources\Scripts\PlatformInputController.js	/^function ProjectOntoPlane (v : Vector3, normal : Vector3) {$/;"	f
+Update	Assets\Standard Assets\Character Controllers\Sources\Scripts\PlatformInputController.js	/^function Update () {$/;"	f
+autoRotate	Assets\Standard Assets\Character Controllers\Sources\Scripts\PlatformInputController.js	/^var autoRotate : boolean = true;$/;"	v
+maxRotationSpeed	Assets\Standard Assets\Character Controllers\Sources\Scripts\PlatformInputController.js	/^var maxRotationSpeed : float = 360;$/;"	v
+AngleDistance	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonCamera.js	/^function AngleDistance (a : float, b : float)$/;"	f
+Apply	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonCamera.js	/^function Apply (dummyTarget : Transform, dummyCenter : Vector3)$/;"	f
+Awake	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonCamera.js	/^function Awake ()$/;"	f
+Cut	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonCamera.js	/^function Cut (dummyTarget : Transform, dummyCenter : Vector3)$/;"	f
+DebugDrawStuff	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonCamera.js	/^function DebugDrawStuff ()$/;"	f
+GetCenterOffset	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonCamera.js	/^function GetCenterOffset ()$/;"	f
+LateUpdate	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonCamera.js	/^function LateUpdate () {$/;"	f
+SetUpRotation	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonCamera.js	/^function SetUpRotation (centerPos : Vector3, headPos : Vector3)$/;"	f
+angularMaxSpeed	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonCamera.js	/^var angularMaxSpeed = 15.0;$/;"	v
+angularSmoothLag	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonCamera.js	/^var angularSmoothLag = 0.3;$/;"	v
+cameraTransform	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonCamera.js	/^var cameraTransform : Transform;$/;"	v
+clampHeadPositionScreenSpace	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonCamera.js	/^var clampHeadPositionScreenSpace = 0.75;$/;"	v
+currentHeight	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonCamera.js	/^	var currentHeight = cameraTransform.position.y;$/;"	v
+currentRotation	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonCamera.js	/^	var currentRotation = Quaternion.Euler (0, currentAngle, 0);$/;"	v
+distance	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonCamera.js	/^var distance = 7.0;$/;"	v
+height	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonCamera.js	/^var height = 3.0;$/;"	v
+heightSmoothLag	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonCamera.js	/^var heightSmoothLag = 0.3;$/;"	v
+lockCameraTimeout	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonCamera.js	/^var lockCameraTimeout = 0.2;$/;"	v
+snapMaxSpeed	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonCamera.js	/^var snapMaxSpeed = 720.0;$/;"	v
+snapSmoothLag	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonCamera.js	/^var snapSmoothLag = 0.2;$/;"	v
+ApplyGravity	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^function ApplyGravity ()$/;"	f
+ApplyJumping	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^function ApplyJumping ()$/;"	f
+Awake	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^function Awake ()$/;"	f
+CalculateJumpVerticalSpeed	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^function CalculateJumpVerticalSpeed (targetJumpHeight : float)$/;"	f
+DidJump	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^function DidJump ()$/;"	f
+GetDirection	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^function GetDirection () {$/;"	f
+GetLockCameraTimer	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^function GetLockCameraTimer () $/;"	f
+GetSpeed	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^function GetSpeed () {$/;"	f
+HasJumpReachedApex	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^function HasJumpReachedApex ()$/;"	f
+IsGrounded	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^function IsGrounded () {$/;"	f
+IsGroundedWithTimeout	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^function IsGroundedWithTimeout ()$/;"	f
+IsJumping	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^function IsJumping () {$/;"	f
+IsMovingBackwards	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^function IsMovingBackwards () {$/;"	f
+OnControllerColliderHit	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^function OnControllerColliderHit (hit : ControllerColliderHit )$/;"	f
+Reset	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^function Reset ()$/;"	f
+Update	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^function Update() {$/;"	f
+UpdateSmoothedMovementDirection	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^function UpdateSmoothedMovementDirection ()$/;"	f
+canJump	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^var canJump = true;$/;"	v
+gravity	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^var gravity = 20.0;$/;"	v
+inAirControlAcceleration	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^var inAirControlAcceleration = 3.0;$/;"	v
+jumpHeight	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^var jumpHeight = 0.5;$/;"	v
+rotateSpeed	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^var rotateSpeed = 500.0;$/;"	v
+runSpeed	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^var runSpeed = 6.0;$/;"	v
+speedSmoothing	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^var speedSmoothing = 10.0;$/;"	v
+trotAfterSeconds	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^var trotAfterSeconds = 3.0;$/;"	v
+trotSpeed	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^var trotSpeed = 4.0;$/;"	v
+walkSpeed	Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js	/^var walkSpeed = 2.0;$/;"	v
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_PROGRAM_VERSION	5.8	//
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
