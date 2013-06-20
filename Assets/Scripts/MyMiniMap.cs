@@ -22,42 +22,52 @@ public class MyMiniMap : MonoBehaviour
 {
 	public enum ChapterMapTypes
 	{ // 챕터맵의 종류
-		chapter1_1
+		chapter_1_1_1
 ,
-		chapter1_2
+		chapter_1_1_2
 ,
-		chapter1_3
+		chapter_1_1_3
 ,
-		chapter2_1
+		chapter_1_2_1
 ,
-		chapter2_2
+		chapter_1_2_2
 ,
-		chapter2_3
+		chapter_1_2_3
 ,
-		chapter3_1
+		chapter_1_3_1
 ,
-		chapter3_2
+		chapter_1_3_2
 ,
-		chapter3_3
+		chapter_1_3_3
+,
+		chapter_1_4_1
+,
+		chapter_1_4_2
+,
+		chapter_1_4_3
 ,
 	};
 
-	private int[] totalmapWidthPx = {923, 923, 923};// 전체 맵의 픽셀 너비 923 픽셀
-	private int[] totalmapHeightPx = {923, 923, 923};// 전체 맵의 픽셀 높이 923 픽셀
-	private int[] chaptermapWidth = {314, 314, 314};// 챕터 맵의 픽셀 너비 314 픽셀
-	private int[] chaptermapHeight = {314, 314, 314};// 챕터 맵의 픽셀 높이 314 픽셀
+	private int[] totalmapWidthPx = {923, 923, 923, 923};// 전체 맵의 픽셀 너비 923 픽셀
+	private int[] totalmapHeightPx = {923, 923, 923, 923};// 전체 맵의 픽셀 높이 923 픽셀
+	private int[] chaptermapWidth = {314, 314, 314, 314};// 챕터 맵의 픽셀 너비 314 픽셀
+	private int[] chaptermapHeight = {314, 314, 314, 314};// 챕터 맵의 픽셀 높이 314 픽셀
 
-	private int[] pixelZeroXPx = {451, 451, 451};// 전체이미지맵에서의 픽셀 X좌표
-	private int[] pixelZeroYPx = {883, 883, 883};// 전체이미지맵에서의 픽셀 X좌표
+	private int[] pixelZeroXPx = {451, 451, 451, 451};// 전체이미지맵에서의 픽셀 X좌표
+	private int[] pixelZeroYPx = {883, 883, 883, 883};// 전체이미지맵에서의 픽셀 Y좌표
 
 	private double unitPerPixelRatio;// 1유니티상의 픽셀거리
-	private double[] unitPerPixelRatioArray = {33 / 36.2};
+	private double[] unitPerPixelRatioArray = {33 / 36.2,
+		0.09374527507073417,
+		0.2917690171986541,
+		0.7905554251593446,
+	};
 	private Vector2[] chapterMapPos;// 챕터맵별로 적용되는 위치값배열
 
-	private ChapterMapTypes _chapterMapType = ChapterMapTypes.chapter1_1;
+	private ChapterMapTypes _chapterMapType = ChapterMapTypes.chapter_1_1_1;
 	public ChapterMapTypes chapterMapType {
 		get{ return this._chapterMapType;}
-		set{ 
+		set{
 			this._chapterMapType = value;
 			this.SetupPositions ();
 			this.SetGuiVariables ();
@@ -76,7 +86,7 @@ public class MyMiniMap : MonoBehaviour
 	private Vector3 PlayerPosition;// 플레이어의 좌표값을 변수에 대입
 	// 픽셀의 비율(전체 원본픽셀을 표시하면 화면에 거의 꽉 참, 화면에 비율에 맞춰 축소)
 	public float RatioScale = 0.4f;
-	public float[] RatioScales = {0.4f, 0.4f, 0.4f};
+	public float[] RatioScales = {0.4f, 0.4f, 0.4f, 0.4f};
 
 	private int chaptermapPosXPx;// 챕터맵의 왼쪽 아래부분의 X좌표(0,0)을 왼쪽 아래로 기준으로 함
 	private int chaptermapPosYPx;// 챕터맵의 왼쪽 아래부분의 Y좌표(0,0)을 왼쪽 아래로 기준으로 함
@@ -116,23 +126,29 @@ public class MyMiniMap : MonoBehaviour
 
 	private void SetupPositions() {
 		switch (chapterMapType) {
-		case ChapterMapTypes.chapter1_1:
-		case ChapterMapTypes.chapter1_2:
-		case ChapterMapTypes.chapter1_3:
+		case ChapterMapTypes.chapter_1_1_1:
+		case ChapterMapTypes.chapter_1_1_2:
+		case ChapterMapTypes.chapter_1_1_3:
 			SetupCoodination(0);
 			break;
 
-		case ChapterMapTypes.chapter2_1:
-		case ChapterMapTypes.chapter2_2:
-		case ChapterMapTypes.chapter2_3:
+		case ChapterMapTypes.chapter_1_2_1:
+		case ChapterMapTypes.chapter_1_2_2:
+		case ChapterMapTypes.chapter_1_2_3:
 			SetupCoodination(1);
 			break;
 
-		case ChapterMapTypes.chapter3_1:
-		case ChapterMapTypes.chapter3_2:
-		case ChapterMapTypes.chapter3_3:
+		case ChapterMapTypes.chapter_1_3_1:
+		case ChapterMapTypes.chapter_1_3_2:
+		case ChapterMapTypes.chapter_1_3_3:
 			SetupCoodination(2);
 			break;
+
+		case ChapterMapTypes.chapter_1_4_1:
+		case ChapterMapTypes.chapter_1_4_2:
+		case ChapterMapTypes.chapter_1_4_3:
+			SetupCoodination(3);
+		break;
 
 		default:
 			break;
@@ -158,10 +174,19 @@ public class MyMiniMap : MonoBehaviour
 			new Vector2(294f, (float)(totalmapHeightPx[0] - chaptermapHeight[0] - 601)),
 			new Vector2(192f, (float)(totalmapHeightPx[0] - chaptermapHeight[0] - 300)),
 			new Vector2(369f, (float)(totalmapHeightPx[0] - chaptermapHeight[0] - 0)),
+			new Vector2(501f, (float)(totalmapHeightPx[1] - chaptermapHeight[1] - 419)),
+			new Vector2(345f, (float)(totalmapHeightPx[1] - chaptermapHeight[1] - 188)),
+			new Vector2(91f, (float)(totalmapHeightPx[1] - chaptermapHeight[1] - 188)),
+			new Vector2(219f, (float)(totalmapHeightPx[2] - chaptermapHeight[2] - 91)),
+			new Vector2(331f, (float)(totalmapHeightPx[2] - chaptermapHeight[2] - 295)),
+			new Vector2(374f, (float)(totalmapHeightPx[2] - chaptermapHeight[2] - 493)),
+			new Vector2(400f, (float)(totalmapHeightPx[3] - chaptermapHeight[3] - 112)),
+			new Vector2(217f, (float)(totalmapHeightPx[3] - chaptermapHeight[3] - 331)),
+			new Vector2(107f, (float)(totalmapHeightPx[3] - chaptermapHeight[3] - 525)),
 		};// 챕터맵별로 적용되는 위치값배열
 		unitPerPixelRatio = 33 / 36.2;
 
-		this.chapterMapType = ChapterMapTypes.chapter1_1;
+		this.chapterMapType = ChapterMapTypes.chapter_1_1_1;
 //		SetGuiVariables ();
 	}
 
