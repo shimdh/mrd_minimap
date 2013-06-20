@@ -59,6 +59,7 @@ public class MyMiniMap : MonoBehaviour
 		get{ return this._chapterMapType;}
 		set{ 
 			this._chapterMapType = value;
+			this.SetupPositions ();
 			this.ApplyChapterPositionPixel();
 		}
 	}
@@ -154,16 +155,11 @@ public class MyMiniMap : MonoBehaviour
 	}
 
 	void Awake() {
-		chapterMapPos = new Vector2[] {
-			new Vector2(294f,
-				(float)(totalmapHeightPx[0] - chaptermapHeight[0] - 601)),
-			new Vector2(192f,
-				(float)(totalmapHeightPx[0] - chaptermapHeight[0] - 300)),
-			new Vector2(369f,
-				(float)(totalmapHeightPx[0] - chaptermapHeight[0] - 0))
-		};
-
-
+		chapterMapPos = new []{
+			new Vector2(294f, (float)(totalmapHeightPx[0] - chaptermapHeight[0] - 601)),
+			new Vector2(192f, (float)(totalmapHeightPx[0] - chaptermapHeight[0] - 300)),
+			new Vector2(369f, (float)(totalmapHeightPx[0] - chaptermapHeight[0] - 0)),
+		};// 챕터맵별로 적용되는 위치값배열
 		unitPerPixelRatio = 33 / 36.2;
 
 		pixelWidth = transform.guiTexture.texture.width * RatioScale;
@@ -180,6 +176,8 @@ public class MyMiniMap : MonoBehaviour
 
 		gui_bottom_left_x = transform.position.x - (guiWidth / 2);
 		gui_bottom_left_y = transform.position.y - (guiHeight / 2);
+
+		this.chapterMapType = ChapterMapTypes.chapter1_1;
 	}
 
 	// Use this for initialization
@@ -266,7 +264,7 @@ public class MyMiniMap : MonoBehaviour
 		PlayerPosition = new Vector3(Player.transform.position.x,
 		Player.transform.position.y, Player.transform.position.z);
 
-		SetupPositions();
+//		SetupPositions();
 
 		converted_totalmap_player_pos_x_px =
 			PlayerPosition.x * unitPerPixelRatio + currentPixelZeroX_px;
@@ -310,7 +308,7 @@ public class MyMiniMap : MonoBehaviour
 	}
 
 	Vector2 CalculateEnemyPosition (Vector3 pos) {
-		SetupPositions();
+//		SetupPositions();
 		double converted_totalmap_enemy_pos_x_px =
 			pos.x * unitPerPixelRatio + currentPixelZeroX_px;
 		double converted_totalmap_enemy_pos_y_px =

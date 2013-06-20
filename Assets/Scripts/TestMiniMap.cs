@@ -1,19 +1,21 @@
 using UnityEngine;
 using System.Collections;
 
-public class TestMiniMap : MonoBehaviour {
+public class TestMiniMap : MonoBehaviour
+{
 	private MyMiniMap miniMap;
-	
 	// Use this for initialization
-	void Start () {
-		miniMap = GameObject.Find("MapGUI").GetComponent<MyMiniMap>();
+	void Start ()
+	{
+		miniMap = GameObject.Find ("MapGUI").GetComponent<MyMiniMap> ();
 	}
-	
 	// Update is called once per frame
-	void Update () {
-		if(Input.GetKeyUp("t")) {
-			Debug.Log("GetShowState() : " + miniMap.GetShowState());
-			miniMap.EnableMiniMap(!miniMap.GetShowState());
+	void Update ()
+	{
+		if (Input.GetKeyUp ("t")) {
+			miniMap.chapterMapType = MyMiniMap.ChapterMapTypes.chapter1_2;
+			Debug.Log ("GetShowState() : " + miniMap.GetShowState());
+			miniMap.EnableMiniMap (!miniMap.GetShowState());
 		}
 	}
 }
