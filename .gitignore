@@ -6,4 +6,5 @@
 *.csproj
 *.unityproj
 *.sln
-.tag*
+.tags
+.tags_sorted_by_file
