@@ -60,6 +60,7 @@ public class MyMiniMap : MonoBehaviour
 		set{ 
 			this._chapterMapType = value;
 			this.SetupPositions ();
+			this.SetGuiVariables ();
 			this.ApplyChapterPositionPixel();
 		}
 	}
@@ -75,6 +76,7 @@ public class MyMiniMap : MonoBehaviour
 	private Vector3 PlayerPosition;// 플레이어의 좌표값을 변수에 대입
 	// 픽셀의 비율(전체 원본픽셀을 표시하면 화면에 거의 꽉 참, 화면에 비율에 맞춰 축소)
 	public float RatioScale = 0.4f;
+	public float[] RatioScales = {0.4f, 0.4f, 0.4f};
 
 	private int chaptermapPosXPx;// 챕터맵의 왼쪽 아래부분의 X좌표(0,0)을 왼쪽 아래로 기준으로 함
 	private int chaptermapPosYPx;// 챕터맵의 왼쪽 아래부분의 Y좌표(0,0)을 왼쪽 아래로 기준으로 함
@@ -105,6 +107,7 @@ public class MyMiniMap : MonoBehaviour
 	private int currentTotalmapHeight_px = 0;
 
 	private void SetupCoodination(int index) {
+		RatioScale = RatioScales [index];
 		unitPerPixelRatio = unitPerPixelRatioArray[index];
 		currentPixelZeroX_px = pixelZeroXPx[index];
 		currentPixelZeroY_px = pixelZeroYPx[index];
@@ -113,45 +116,41 @@ public class MyMiniMap : MonoBehaviour
 
 	private void SetupPositions() {
 		switch (chapterMapType) {
-			case ChapterMapTypes.chapter1_1:
+		case ChapterMapTypes.chapter1_1:
+		case ChapterMapTypes.chapter1_2:
+		case ChapterMapTypes.chapter1_3:
 			SetupCoodination(0);
 			break;
 
-			case ChapterMapTypes.chapter1_2:
-			SetupCoodination(0);
-			break;
-
-			case ChapterMapTypes.chapter1_3:
-			SetupCoodination(0);
-			break;
-
-			case ChapterMapTypes.chapter2_1:
+		case ChapterMapTypes.chapter2_1:
+		case ChapterMapTypes.chapter2_2:
+		case ChapterMapTypes.chapter2_3:
 			SetupCoodination(1);
 			break;
 
-			case ChapterMapTypes.chapter2_2:
-			SetupCoodination(1);
-			break;
-
-			case ChapterMapTypes.chapter2_3:
-			SetupCoodination(1);
-			break;
-
-			case ChapterMapTypes.chapter3_1:
+		case ChapterMapTypes.chapter3_1:
+		case ChapterMapTypes.chapter3_2:
+		case ChapterMapTypes.chapter3_3:
 			SetupCoodination(2);
 			break;
 
-			case ChapterMapTypes.chapter3_2:
-			SetupCoodination(2);
-			break;
-
-			case ChapterMapTypes.chapter3_3:
-			SetupCoodination(2);
-			break;
-
-			default:
+		default:
 			break;
 		}
+	}
+
+	void SetGuiVariables ()
+	{
+		pixelWidth = transform.guiTexture.texture.width * RatioScale;
+		pixelHeight = transform.guiTexture.texture.height * RatioScale;
+		pixelX = -(pixelWidth / 2);
+		pixelY = -(pixelHeight / 2);
+		//적용시킨 픽셀인셋
+		transform.guiTexture.pixelInset = new Rect ((float)pixelX, (float)pixelY, (float)pixelWidth, (float)pixelHeight);
+		guiWidth = (transform.guiTexture.texture.width * RatioScale) / Screen.width;
+		guiHeight = (transform.guiTexture.texture.height * RatioScale) / Screen.height;
+		gui_bottom_left_x = transform.position.x - (guiWidth / 2);
+		gui_bottom_left_y = transform.position.y - (guiHeight / 2);
 	}
 
 	void Awake() {
@@ -162,22 +161,8 @@ public class MyMiniMap : MonoBehaviour
 		};// 챕터맵별로 적용되는 위치값배열
 		unitPerPixelRatio = 33 / 36.2;
 
-		pixelWidth = transform.guiTexture.texture.width * RatioScale;
-		pixelHeight = transform.guiTexture.texture.height * RatioScale;
-		pixelX = -(pixelWidth / 2);
-		pixelY = -(pixelHeight / 2);
-
-		//적용시킨 픽셀인셋
-		transform.guiTexture.pixelInset = new Rect((float)pixelX,
-			(float)pixelY, (float)pixelWidth, (float)pixelHeight);
-
-		guiWidth = (transform.guiTexture.texture.width * RatioScale) / Screen.width;
-		guiHeight = (transform.guiTexture.texture.height * RatioScale) / Screen.height;
-
-		gui_bottom_left_x = transform.position.x - (guiWidth / 2);
-		gui_bottom_left_y = transform.position.y - (guiHeight / 2);
-
 		this.chapterMapType = ChapterMapTypes.chapter1_1;
+//		SetGuiVariables ();
 	}
 
 	// Use this for initialization
