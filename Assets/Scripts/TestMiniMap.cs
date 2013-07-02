@@ -13,9 +13,9 @@ public class TestMiniMap : MonoBehaviour
 	void Update ()
 	{
 		if (Input.GetKeyUp ("t")) {
-			miniMap.chapterMapType = MyMiniMap.ChapterMapTypes.chapter_1_2_2;
-			Debug.Log ("GetShowState() : " + miniMap.GetShowState());
-			miniMap.EnableMiniMap (!miniMap.GetShowState());
+			miniMap.chapterMapType = MyMiniMap.ChapterMapTypes.chapter_1_1_2;
+			Debug.Log ("GetShowState() : " + miniMap.GetShowState ());
+			miniMap.EnableMiniMap (!miniMap.GetShowState ());
 		}
 	}
 }

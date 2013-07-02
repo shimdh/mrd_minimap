@@ -21,31 +21,19 @@ using System.Collections;
 public class MyMiniMap : MonoBehaviour
 {
 	public enum ChapterMapTypes
-	{ // 챕터맵의 종류
-		chapter_1_1_1
-,
-		chapter_1_1_2
-,
-		chapter_1_1_3
-,
-		chapter_1_2_1
-,
-		chapter_1_2_2
-,
-		chapter_1_2_3
-,
-		chapter_1_3_1
-,
-		chapter_1_3_2
-,
-		chapter_1_3_3
-,
-		chapter_1_4_1
-,
-		chapter_1_4_2
-,
-		chapter_1_4_3
-,
+	{ 																																																																		// 챕터맵의 종류
+		chapter_1_1_1,
+		chapter_1_1_2,
+		chapter_1_1_3,
+		chapter_1_2_1,
+		chapter_1_2_2,
+		chapter_1_2_3,
+		chapter_1_3_1,
+		chapter_1_3_2,
+		chapter_1_3_3,
+		chapter_1_4_1,
+		chapter_1_4_2,
+		chapter_1_4_3,
 	};
 
 	private int[] totalmapWidthPx = {923, 923, 923, 923};// 전체 맵의 픽셀 너비 923 픽셀
@@ -53,14 +41,42 @@ public class MyMiniMap : MonoBehaviour
 	private int[] chaptermapWidth = {314, 314, 314, 314};// 챕터 맵의 픽셀 너비 314 픽셀
 	private int[] chaptermapHeight = {314, 314, 314, 314};// 챕터 맵의 픽셀 높이 314 픽셀
 
-	private int[] pixelZeroXPx = {451, 451, 451, 451};// 전체이미지맵에서의 픽셀 X좌표
-	private int[] pixelZeroYPx = {883, 883, 883, 883};// 전체이미지맵에서의 픽셀 Y좌표
+	private int[] pixelZeroXPx = {451, 351, 465, 564, 605, 598, 508, 401, 570, 674, 393, 279};// 전체이미지맵에서의 픽셀 X좌표
+	private int[] pixelZeroYPx = {883, 581, 277, 701, 329, 325, 247, 351, 539, 194, 376, 612};// 전체이미지맵에서의 픽셀 Y좌표
+//	private int[] pixelZeroXPx = {451, 564, 508, 674};// 전체이미지맵에서의 픽셀 X좌표
+//	private int[] pixelZeroYPx = {883, 701, 247, 194};// 전체이미지맵에서의 픽셀 Y좌표
+
+	private double[] startPositionXPx = {
+		0.5852232, -111.2241, 10.29175, 
+		-10.35293, 18.09468, -247.3088, 
+		1.199771, -131.2726, 76.84732,
+		-12.83481, -401.7659, -562.6281,
+	} ;//유니티상에서의 시작위치 X좌표
+	private double[] startPositionZPx = {
+		4.491916, 340.5634, 678.0831, 
+		13.82735, 338.446, 344.5162,
+		9.878985, -122.4566, -377.2578,
+		13.78995, -229.4082, -529.3715,
+	} ;//유니티상에서의 시작위치 Z좌표
+
+//	private double[] startPositionXPx = {
+//		0.5852232,
+//		-10.35293,
+//		1.199771, 
+//		-12.83481,
+//	} ;//유니티상에서의 시작위치 X좌표
+//	private double[] startPositionZPx = {
+//		4.491916,
+//		13.82735,
+//		9.878985,
+//		13.78995,
+//	} ;//유니티상에서의 시작위치 Z좌표
 
 	private double unitPerPixelRatio;// 1유니티상의 픽셀거리
 	private double[] unitPerPixelRatioArray = {33 / 36.2,
-		0.09374527507073417,
-		0.2917690171986541,
-		0.7905554251593446,
+		1.125992415256602,
+		2.10553990311102,
+		1.08244653426257,
 	};
 	private Vector2[] chapterMapPos;// 챕터맵별로 적용되는 위치값배열
 
@@ -99,10 +115,10 @@ public class MyMiniMap : MonoBehaviour
 	private double guiHeight;// 0과 1사이의 GUI좌표값으로의 텍스처의 높이(GUI상의 높이)
 	private double gui_bottom_left_x;// 0과 1사이의 GUI좌표값으로의 텍스쳐의 아래왼쪽의 X좌표(GUI상의 X좌표)
 	private double gui_bottom_left_y;// 0과 1사이의 GUI좌표값으로의 텍스쳐의 아래왼쪽의 Y좌표(GUI상의 Y좌표)
-	private double converted_totalmap_player_pos_x_px;// 유니티상의 좌표를 전체맵상에서의 이미지좌표에서 (0,0)을 왼쪽아래를 기준으로 바꾼 X좌표
-	private double converted_totalmap_player_pos_y_px;// 유니티상의 좌표를 전체맵상에서의 이미지좌표에서 (0,0)을 왼쪽아래를 기준으로 바꾼 y좌표
-	private double converted_chaptermap_player_pos_x_px;// converted_totalmap_player_pos_x_px 를 챕터맵을 기준좌표로 바꾼 X좌표
-	private double converted_chaptermap_player_pos_y_px;// converted_totalmap_player_pos_y_px 를 챕터맵을 기준좌표로 바꾼 Y좌표
+	public double converted_totalmap_player_pos_x_px;// 유니티상의 좌표를 전체맵상에서의 이미지좌표에서 (0,0)을 왼쪽아래를 기준으로 바꾼 X좌표
+	public double converted_totalmap_player_pos_y_px;// 유니티상의 좌표를 전체맵상에서의 이미지좌표에서 (0,0)을 왼쪽아래를 기준으로 바꾼 y좌표
+	public double converted_chaptermap_player_pos_x_px;// converted_totalmap_player_pos_x_px 를 챕터맵을 기준좌표로 바꾼 X좌표
+	public double converted_chaptermap_player_pos_y_px;// converted_totalmap_player_pos_y_px 를 챕터맵을 기준좌표로 바꾼 Y좌표
 	private double gui_chaptermap_player_pos_x_scale;//gui상의 0과 1사이의 좌표계로 변환한 X좌표(scale 적용, gui상의 챕터맵의 왼쪽 오른쪽 좌표도 적용)
 	private double gui_chaptermap_player_pos_y_scale;//gui상의 0과 1사이의 좌표계로 변환한 Y좌표(scale 적용, gui상의 챕터맵의 왼쪽 오른쪽 좌표도 적용)
 
@@ -116,43 +132,30 @@ public class MyMiniMap : MonoBehaviour
 	private int currentPixelZeroY_px = 0;
 	private int currentTotalmapHeight_px = 0;
 
+	private double currentStartPointX = 0;
+	private double currentStartPointZ = 0;
+
+
+	private void SetupStartPosition (int index)
+	{
+		currentPixelZeroX_px = pixelZeroXPx [index];
+		currentPixelZeroY_px = pixelZeroYPx [index];
+
+		currentStartPointX = startPositionXPx [index];
+		currentStartPointZ = startPositionZPx [index];
+	}
+
 	private void SetupCoodination(int index) {
 		RatioScale = RatioScales [index];
 		unitPerPixelRatio = unitPerPixelRatioArray[index];
-		currentPixelZeroX_px = pixelZeroXPx[index];
-		currentPixelZeroY_px = pixelZeroYPx[index];
 		currentTotalmapHeight_px = totalmapHeightPx[index];
 	}
 
 	private void SetupPositions() {
-		switch (chapterMapType) {
-		case ChapterMapTypes.chapter_1_1_1:
-		case ChapterMapTypes.chapter_1_1_2:
-		case ChapterMapTypes.chapter_1_1_3:
-			SetupCoodination(0);
-			break;
-
-		case ChapterMapTypes.chapter_1_2_1:
-		case ChapterMapTypes.chapter_1_2_2:
-		case ChapterMapTypes.chapter_1_2_3:
-			SetupCoodination(1);
-			break;
-
-		case ChapterMapTypes.chapter_1_3_1:
-		case ChapterMapTypes.chapter_1_3_2:
-		case ChapterMapTypes.chapter_1_3_3:
-			SetupCoodination(2);
-			break;
-
-		case ChapterMapTypes.chapter_1_4_1:
-		case ChapterMapTypes.chapter_1_4_2:
-		case ChapterMapTypes.chapter_1_4_3:
-			SetupCoodination(3);
-		break;
-
-		default:
-			break;
-		}
+		int div = (int)chapterMapType / 3;
+		SetupCoodination (div);
+		SetupStartPosition ((int)chapterMapType);
+//		SetupStartPosition (div);
 	}
 
 	void SetGuiVariables ()
@@ -271,19 +274,27 @@ public class MyMiniMap : MonoBehaviour
 
 	void CalculatePlayerPosition ()
 	{
-		PlayerPosition = new Vector3(Player.transform.position.x,
-		Player.transform.position.y, Player.transform.position.z);
+		//플레이어의 현재위치 구하기
+		PlayerPosition = new Vector3(
+			Player.transform.position.x, Player.transform.position.y, Player.transform.position.z);
 
 //		SetupPositions();
 
+		//현재 플레이어의 x좌표의 위치를 2D에서의 좌표로부터의 x좌표로 변환
 		converted_totalmap_player_pos_x_px =
-			PlayerPosition.x * unitPerPixelRatio + currentPixelZeroX_px;
+			(PlayerPosition.x - currentStartPointX) * unitPerPixelRatio + currentPixelZeroX_px;
+		//현재 플레이어의 z좌표의 위치를 2D에서의 좌표로부터의 y좌표로 변환
 		converted_totalmap_player_pos_y_px =
-			PlayerPosition.z * unitPerPixelRatio + currentTotalmapHeight_px - currentPixelZeroY_px;
+			(PlayerPosition.z - currentStartPointZ) * unitPerPixelRatio + currentTotalmapHeight_px - currentPixelZeroY_px;
+
+		//챕터맵안에서의 x좌표로 변환
 		converted_chaptermap_player_pos_x_px =
 			converted_totalmap_player_pos_x_px - chaptermapPosXPx;
+		//챕터맵안에서의 y좌표로 변환
 		converted_chaptermap_player_pos_y_px =
 			converted_totalmap_player_pos_y_px - chaptermapPosYPx;
+
+		//0~1사이의 GUI 좌표로 변환
 		gui_chaptermap_player_pos_x_scale =
 			converted_chaptermap_player_pos_x_px * RatioScale / Screen.width + gui_bottom_left_x;
 		gui_chaptermap_player_pos_y_scale =
@@ -304,6 +315,8 @@ public class MyMiniMap : MonoBehaviour
 
 		foreach(GameObject go in enemies) {
 			Vector2 cal_enemy_pos = CalculateEnemyPosition(go.transform.position);
+
+			// 미니맵을 벗어나는 적은 표시하지 않는다.
 			if(cal_enemy_pos.x < gui_bottom_left_x
 				|| cal_enemy_pos.y < gui_bottom_left_y
 				|| cal_enemy_pos.x > gui_bottom_left_x + guiWidth
@@ -320,9 +333,9 @@ public class MyMiniMap : MonoBehaviour
 	Vector2 CalculateEnemyPosition (Vector3 pos) {
 //		SetupPositions();
 		double converted_totalmap_enemy_pos_x_px =
-			pos.x * unitPerPixelRatio + currentPixelZeroX_px;
+			(pos.x - currentStartPointX) * unitPerPixelRatio + currentPixelZeroX_px;
 		double converted_totalmap_enemy_pos_y_px =
-			pos.z * unitPerPixelRatio + currentTotalmapHeight_px - currentPixelZeroY_px;
+			(pos.z - currentStartPointZ) * unitPerPixelRatio + currentTotalmapHeight_px - currentPixelZeroY_px;
 		double converted_chaptermap_enemy_pos_x_px =
 			converted_totalmap_enemy_pos_x_px - chaptermapPosXPx;
 		double converted_chaptermap_enemy_pos_y_px =
