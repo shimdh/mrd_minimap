@@ -13,7 +13,7 @@ public class TestMiniMap : MonoBehaviour
 	void Update ()
 	{
 		if (Input.GetKeyUp ("t")) {
-			miniMap.chapterMapType = MyMiniMap.ChapterMapTypes.chapter_1_1_2;
+			miniMap.chapterMapType = MyMiniMap.ChapterMapTypes.chapter_1_4_1;
 			Debug.Log ("GetShowState() : " + miniMap.GetShowState ());
 			miniMap.EnableMiniMap (!miniMap.GetShowState ());
 		}

@@ -21,7 +21,7 @@ using System.Collections;
 public class MyMiniMap : MonoBehaviour
 {
 	public enum ChapterMapTypes
-	{ 																																																																				// 챕터맵의 종류
+	{ 																																																																																										// 챕터맵의 종류
 		chapter_1_1_1,
 		chapter_1_1_2,
 		chapter_1_1_3,
@@ -72,24 +72,28 @@ public class MyMiniMap : MonoBehaviour
 //		13.78995,
 //	} ;//유니티상에서의 시작위치 Z좌표
 
-	private double unitPerPixelRatio;// 1유니티상의 픽셀거리
+	public double unitPerPixelRatio;// 1유니티상의 픽셀거리
 	private double[] unitPerPixelRatioArray = {33 / 36.2,
-		1.125992415256602,
-		2.10553990311102,
-		1.08244653426257,
+		-49 / 5.4819,
+		37 / 17.57269,
+		18 / 17.55283,
 	};
 	private Vector2[] chapterMapPos;// 챕터맵별로 적용되는 위치값배열
+
+	public int chapterMapInt = 0;
 
 	private ChapterMapTypes _chapterMapType = ChapterMapTypes.chapter_1_1_1;
 	public ChapterMapTypes chapterMapType {
 		get{ return this._chapterMapType;}
 		set{
 			this._chapterMapType = value;
+			this.chapterMapInt = (int)value;
 			this.SetupPositions ();
 			this.SetGuiVariables ();
 			this.ApplyChapterPositionPixel();
 		}
 	}
+
 
 	public GameObject PlayerDotGUI;// 플레이어의 닷 GUI 게임오브젝트
 	public GameObject Player;// 플레이어 게임오브젝트
@@ -104,8 +108,8 @@ public class MyMiniMap : MonoBehaviour
 	public float RatioScale = 0.4f;
 	public float[] RatioScales = {0.4f, 0.4f, 0.4f, 0.4f};
 
-	private int chaptermapPosXPx;// 챕터맵의 왼쪽 아래부분의 X좌표(0,0)을 왼쪽 아래로 기준으로 함
-	private int chaptermapPosYPx;// 챕터맵의 왼쪽 아래부분의 Y좌표(0,0)을 왼쪽 아래로 기준으로 함
+	public int chaptermapPosXPx;// 챕터맵의 왼쪽 아래부분의 X좌표(0,0)을 왼쪽 아래로 기준으로 함
+	public int chaptermapPosYPx;// 챕터맵의 왼쪽 아래부분의 Y좌표(0,0)을 왼쪽 아래로 기준으로 함
 
 	private double pixelWidth;// 원본 픽셀에 픽셀 비율을 적용한 픽셀 너비
 	private double pixelHeight;// 원본 픽셀에 픽셀 비율을 적용한 픽셀 높이
@@ -113,14 +117,14 @@ public class MyMiniMap : MonoBehaviour
 	private double pixelY;// 적용된 픽셀의 높이를 바탕으로 한 픽셀의 Y 좌표
 	private double guiWidth;// 0과 1사이의 GUI좌표값으로의 텍스쳐의 너비(GUI상의 너비)
 	private double guiHeight;// 0과 1사이의 GUI좌표값으로의 텍스처의 높이(GUI상의 높이)
-	private double gui_bottom_left_x;// 0과 1사이의 GUI좌표값으로의 텍스쳐의 아래왼쪽의 X좌표(GUI상의 X좌표)
-	private double gui_bottom_left_y;// 0과 1사이의 GUI좌표값으로의 텍스쳐의 아래왼쪽의 Y좌표(GUI상의 Y좌표)
+	public double gui_bottom_left_x;// 0과 1사이의 GUI좌표값으로의 텍스쳐의 아래왼쪽의 X좌표(GUI상의 X좌표)
+	public double gui_bottom_left_y;// 0과 1사이의 GUI좌표값으로의 텍스쳐의 아래왼쪽의 Y좌표(GUI상의 Y좌표)
 	public double converted_totalmap_player_pos_x_px;// 유니티상의 좌표를 전체맵상에서의 이미지좌표에서 (0,0)을 왼쪽아래를 기준으로 바꾼 X좌표
 	public double converted_totalmap_player_pos_y_px;// 유니티상의 좌표를 전체맵상에서의 이미지좌표에서 (0,0)을 왼쪽아래를 기준으로 바꾼 y좌표
 	public double converted_chaptermap_player_pos_x_px;// converted_totalmap_player_pos_x_px 를 챕터맵을 기준좌표로 바꾼 X좌표
 	public double converted_chaptermap_player_pos_y_px;// converted_totalmap_player_pos_y_px 를 챕터맵을 기준좌표로 바꾼 Y좌표
-	private double gui_chaptermap_player_pos_x_scale;//gui상의 0과 1사이의 좌표계로 변환한 X좌표(scale 적용, gui상의 챕터맵의 왼쪽 오른쪽 좌표도 적용)
-	private double gui_chaptermap_player_pos_y_scale;//gui상의 0과 1사이의 좌표계로 변환한 Y좌표(scale 적용, gui상의 챕터맵의 왼쪽 오른쪽 좌표도 적용)
+	public double gui_chaptermap_player_pos_x_scale;//gui상의 0과 1사이의 좌표계로 변환한 X좌표(scale 적용, gui상의 챕터맵의 왼쪽 오른쪽 좌표도 적용)
+	public double gui_chaptermap_player_pos_y_scale;//gui상의 0과 1사이의 좌표계로 변환한 Y좌표(scale 적용, gui상의 챕터맵의 왼쪽 오른쪽 좌표도 적용)
 
 	public float refeshTimeDisplayingDotEnemies = 2;
 
@@ -128,12 +132,12 @@ public class MyMiniMap : MonoBehaviour
 	private float currentAddTimeDisplayingDotEnemies = 0;
 	private bool canShow = true;
 
-	private int currentPixelZeroX_px = 0;
-	private int currentPixelZeroY_px = 0;
-	private int currentTotalmapHeight_px = 0;
+	public int currentPixelZeroX_px = 0;
+	public int currentPixelZeroY_px = 0;
+	public int currentTotalmapHeight_px = 0;
 
-	private double currentStartPointX = 0;
-	private double currentStartPointZ = 0;
+	public double currentStartPointX = 0;
+	public double currentStartPointZ = 0;
 
 
 	private void SetupStartPosition (int index)
