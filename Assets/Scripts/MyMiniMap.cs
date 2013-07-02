@@ -21,7 +21,7 @@ using System.Collections;
 public class MyMiniMap : MonoBehaviour
 {
 	public enum ChapterMapTypes
-	{ 																																																																		// 챕터맵의 종류
+	{ 																																																																				// 챕터맵의 종류
 		chapter_1_1_1,
 		chapter_1_1_2,
 		chapter_1_1_3,
@@ -47,13 +47,13 @@ public class MyMiniMap : MonoBehaviour
 //	private int[] pixelZeroYPx = {883, 701, 247, 194};// 전체이미지맵에서의 픽셀 Y좌표
 
 	private double[] startPositionXPx = {
-		0.5852232, -111.2241, 10.29175, 
+		0, -111.2241, 10.29175, 
 		-10.35293, 18.09468, -247.3088, 
 		1.199771, -131.2726, 76.84732,
 		-12.83481, -401.7659, -562.6281,
 	} ;//유니티상에서의 시작위치 X좌표
 	private double[] startPositionZPx = {
-		4.491916, 340.5634, 678.0831, 
+		0, 340.5634, 678.0831, 
 		13.82735, 338.446, 344.5162,
 		9.878985, -122.4566, -377.2578,
 		13.78995, -229.4082, -529.3715,
